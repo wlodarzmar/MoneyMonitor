@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WealthService, Wealth } from '../services/wealth.service';
 
 @Component({
   selector: 'app-add-wealth',
@@ -10,11 +11,15 @@ export class AddWealthComponent {
 
   public name: string = '';
 
-  constructor() {
+  constructor(private wealthService: WealthService) {
 
   }
 
   onSubmit() {
+
+    let wealth = new Wealth();
+    wealth.name = this.name;
+    this.wealthService.addWealth(wealth);
     console.log(this.name);
   }
 }
