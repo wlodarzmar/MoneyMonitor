@@ -1,6 +1,8 @@
 <h3>Wealths</h3>
 <ul>
-  <div *ngFor="let wealth of wealths">
-    <a>{{wealth.name}}</a>
+  <div *ngFor="let wealth of wealths; index as index">
+    <a [routerLink]="['/wealth', wealth.id, 'year', '']">{{wealth.name}}</a>
+    <i (click)="removeWealth(wealth)" class="fa fa-trash-o pull-right remove-icon"></i>
   </div>
 </ul>
+<a [routerLink]="['/add-wealth']">Add wealth</a>

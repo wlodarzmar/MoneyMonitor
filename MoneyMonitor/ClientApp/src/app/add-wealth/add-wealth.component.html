@@ -1,0 +1,8 @@
+<div>Add wealth</div>
+<div>
+  <form #f="ngForm" (ngSubmit)="onSubmit()">
+    <label>Wealth Name:</label>
+    <input type="text" id="wealth_name" name="wealthName" [(ngModel)]="name" required />
+    <button type="submit">Add</button>
+  </form>
+</div>
