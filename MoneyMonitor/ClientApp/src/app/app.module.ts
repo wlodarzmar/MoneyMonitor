@@ -14,6 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { WealthComponent } from './wealth/wealth.component';
 import { AddWealthComponent } from './add-wealth/add-wealth.component';
+import { WealthService } from './services/wealth.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AddWealthComponent } from './add-wealth/add-wealth.component';
     ])
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },
+    WealthService
   ],
   bootstrap: [AppComponent]
 })
