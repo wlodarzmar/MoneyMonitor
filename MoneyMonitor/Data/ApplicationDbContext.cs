@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MoneyMonitor.Data
 {
@@ -16,6 +17,23 @@ namespace MoneyMonitor.Data
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
+        }
+
+        public DbSet<Wealth> Wealths { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Wealth>()
+                .Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(255);
+            builder.Entity<Wealth>()
+                .HasOne(x => x.Owner)
+                .WithMany(x => x.Wealths)
+                .HasForeignKey(x => x.OwnerId)
+                .IsRequired();
         }
     }
 }
