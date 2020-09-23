@@ -8,5 +8,6 @@ namespace MoneyMonitor.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public IEnumerable<Wealth> Wealths { get; internal set; }
     }
 }
