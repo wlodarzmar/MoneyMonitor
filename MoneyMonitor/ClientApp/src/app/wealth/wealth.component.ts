@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Wealth } from '../services/wealth.service';
 
 @Component({
   selector: 'app-wealth',
@@ -20,9 +21,4 @@ export class WealthComponent {
 
   addWealth() {
   }
-}
-
-export class Wealth {
-  id: number;
-  name: string;
 }
