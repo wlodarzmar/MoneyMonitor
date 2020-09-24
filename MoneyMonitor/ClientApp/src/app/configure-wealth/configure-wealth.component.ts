@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Wealth } from '../services/wealth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-configure-wealth',
@@ -11,8 +12,12 @@ export class ConfigureWealthComponent {
 
   public wealth: Wealth;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     this.wealth = new Wealth();
     this.wealth.name = 'wealth name';
+    route.paramMap.subscribe((params) => {
+      let wealthId = parseInt(params.get('id'));
+      console.log(wealthId, 'ID');
+    });
   }
 }
