@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WealthService, Wealth } from '../services/wealth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-wealth',
@@ -11,7 +12,7 @@ export class AddWealthComponent {
 
   public name: string = '';
 
-  constructor(private wealthService: WealthService) {
+  constructor(private wealthService: WealthService, private router: Router) {
 
   }
 
@@ -21,7 +22,10 @@ export class AddWealthComponent {
     wealth.name = this.name;
     this.wealthService.addWealth(wealth)
       .subscribe(
-        (value) => console.log(value, 'ok'),
+        (value: Wealth) => {
+          console.log(value, 'ok');
+          this.router.navigate(['configure-wealth', value.id]);
+          },
         (e) => console.log('Error', e));
   }
 }
