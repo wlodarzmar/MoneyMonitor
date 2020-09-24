@@ -15,6 +15,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { WealthComponent } from './wealth/wealth.component';
 import { AddWealthComponent } from './add-wealth/add-wealth.component';
 import { WealthService } from './services/wealth.service';
+import { ConfigureWealthComponent } from './configure-wealth/configure-wealth.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WealthService } from './services/wealth.service';
     CounterComponent,
     FetchDataComponent,
     WealthComponent,
-    AddWealthComponent
+    AddWealthComponent,
+    ConfigureWealthComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,6 +39,7 @@ import { WealthService } from './services/wealth.service';
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'wealth', component: WealthComponent, canActivate: [AuthorizeGuard] },
       { path: 'add-wealth', component: AddWealthComponent, canActivate: [AuthorizeGuard] },
+      { path: 'configure-wealth/:id', component: ConfigureWealthComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
