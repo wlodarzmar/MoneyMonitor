@@ -1,4 +1,4 @@
-﻿using MoneyMonitor.Models;
+﻿using System.Collections.Generic;
 
 namespace MoneyMonitor.Models
 {
@@ -8,5 +8,6 @@ namespace MoneyMonitor.Models
         public string Name { get; set; }
         public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
+        public ICollection<Year> Years { get; set; }
     }
 }

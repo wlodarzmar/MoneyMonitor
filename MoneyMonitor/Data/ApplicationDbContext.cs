@@ -20,6 +20,7 @@ namespace MoneyMonitor.Data
         }
 
         public DbSet<Wealth> Wealths { get; set; }
+        public DbSet<Year> Years { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -34,6 +35,13 @@ namespace MoneyMonitor.Data
                 .WithMany(x => x.Wealths)
                 .HasForeignKey(x => x.OwnerId)
                 .IsRequired();
+            builder.Entity<Wealth>().HasMany(x => x.Years)
+                .WithOne(x => x.Wealth)
+                .HasForeignKey(x => x.WealthId)
+                .IsRequired().OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Year>()
+                .HasKey(x => x.Id);
         }
     }
 }
