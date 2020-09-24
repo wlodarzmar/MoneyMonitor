@@ -39,13 +39,14 @@ namespace FortuneMonitor.Controllers
             dbContext.SaveChanges();
 
             var location = this.Url.Action(nameof(this.GetWealth), new { id = wealth.Id });
-
+            wealthDto.Id = wealth.Id;
             return Created(location, wealthDto);
         }
     }
 
     public class WealthDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
