@@ -19,7 +19,9 @@ export class AddWealthComponent {
 
     let wealth = new Wealth();
     wealth.name = this.name;
-    this.wealthService.addWealth(wealth);
-    console.log(this.name);
+    this.wealthService.addWealth(wealth)
+      .subscribe(
+        (value) => console.log(value, 'ok'),
+        (e) => console.log('Error', e));
   }
 }

@@ -14,7 +14,7 @@ export class WealthService {
 
   addWealth(wealth: Wealth) {
     console.log(wealth, 'serv');
-    return this.http.post(`${this.baseUrl}${this.wealthUrl}`, wealth).subscribe((value) => console.log(value, 'ok'));
+    return this.http.post(`${this.baseUrl}${this.wealthUrl}`, wealth);
   }
 }
 
